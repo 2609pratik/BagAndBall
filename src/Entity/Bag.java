@@ -3,19 +3,24 @@ package Entity;
 import java.util.ArrayList;
 
 public class Bag {
-	private ArrayList<Character> bagInfo ;
-	public ArrayList<Character> getBagInfo() {
-		return bagInfo;
-	}
-	public void setBagInfo(ArrayList<Character> bagInfo) {
-		this.bagInfo = bagInfo;
-	}
+	private ArrayList<Colour> ballsInBag ;
+	private final byte CAPACITY = 12;
 	private int redCount = 0; 
 	private int greenCount = 0; 
 	private int yellowCount = 0; 
-
+	
+	public byte getCAPACITY() {
+		return CAPACITY;
+	}
+	public ArrayList<Colour> getBagInfo() {
+		return ballsInBag;
+	}
+	public void setBagInfo(ArrayList<String> bagInfo) {
+		this.ballsInBag = ballsInBag;
+	}
+	
 	public Bag() {
-		this.bagInfo = new ArrayList<>();
+		this.ballsInBag = new ArrayList<>();
 		this.redCount = 0;
 		this.greenCount = 0;
 		this.yellowCount = 0;
@@ -23,30 +28,30 @@ public class Bag {
 	public int getBagcount() {
 		return redCount+greenCount+yellowCount;
 	}
-	public String addRed() {
-		bagInfo.add('r');
+	public String addRedd(Colour red) {
+		ballsInBag.add(red);
 		redCount++;
 		return "Red added";
 	}
-	public String addGreen() {
+	public String addGreen(Colour green) {
 		greenCount++;
 		if (greenCount<redCount) {
-			bagInfo.add('g');
+			ballsInBag.add(green);
 			return "green added";
 		}else {
 			greenCount--;
 			return "green not added";
 		}
 	}
-	public String addYellow() {
+	public String addYellow(Colour yellow) {
 		yellowCount++;
 		float compare = (float) (0.4*getBagcount());
 		if (yellowCount<compare) {
-			bagInfo.add('y');
+			ballsInBag.add(yellow);
 			return "yellow added";
 		}else {
 			yellowCount--;
 		return "yellow not added";
 		}
-	}
+	}	
 }
